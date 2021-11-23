@@ -1,0 +1,72 @@
+{
+  "name": "OnBoarding",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/datetimepicker": "^3.5.2",
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/material-bottom-tabs": "^6.0.9",
+    "@react-navigation/material-top-tabs": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
+    "add": "^2.0.6",
+    "react": "17.0.2",
+    "react-native": "0.66.2",
+    "react-native-animated-pagination-dot": "^0.3.0",
+    "react-native-animated-pagination-dots": "^0.1.72",
+    "react-native-date-picker": "^4.1.1",
+    "react-native-elements": "^3.4.2",
+    "react-native-fast-image": "^8.5.11",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-hide-show-password-input": "^1.2.0",
+    "react-native-input-outline": "^1.5.2",
+    "react-native-input-style": "^1.0.2",
+    "react-native-modal": "^13.0.0",
+    "react-native-modal-datetime-picker": "^13.0.0",
+    "react-native-outline-input": "^1.0.8",
+    "react-native-pager-view": "^5.4.9",
+    "react-native-paper": "^4.10.0",
+    "react-native-popup-confirm-toast": "^2.0.3",
+    "react-native-reanimated": "^2.2.4",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.9.0",
+    "react-native-select-dropdown": "^1.4.0",
+    "react-native-splash-screen": "^3.2.0",
+    "react-native-status-bar-height": "^2.6.0",
+    "react-native-swipe-gestures": "^1.0.5",
+    "react-native-tab-view": "^3.1.1",
+    "react-native-vector-icons": "^9.0.0",
+    "react-swipeable-views-native": "^0.13.2",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
+    "toggle-switch-react-native": "^3.3.0",
+    "yarn": "^1.22.17"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/runtime": "^7.16.0",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "@react-navigation/native": "^6.0.6",
+    "babel-jest": "^27.3.1",
+    "eslint": "^8.1.0",
+    "jest": "^27.3.1",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-native-element-dropdown": "^1.4.8",
+    "react-native-progress-circle": "^2.1.0",
+    "react-navigation": "^4.4.4",
+    "react-test-renderer": "17.0.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  }
+}
