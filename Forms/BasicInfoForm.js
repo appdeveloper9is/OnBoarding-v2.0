@@ -1,4 +1,4 @@
-    import React, {useState} from "react";
+    import React, {useRef, useState} from "react";
     import {Button, KeyboardAvoidingView, ScrollView, Text, TouchableOpacity, View} from "react-native";
     import {TextInput} from "react-native-paper";
     import Ionicons from "react-native-vector-icons/Ionicons";
@@ -8,11 +8,17 @@
     import DatePicker from 'react-native-date-picker'
     import {useNavigation} from "@react-navigation/native";
     import {SafeAreaView} from "react-navigation";
+    import RBSheet from "react-native-raw-bottom-sheet";
+    import MaterialCommunityIcon from "react-native-paper/src/components/MaterialCommunityIcon";
+    import {Icon} from "react-native-elements";
+
 
     const BasicInfoForm =()=>{
         const navigation = useNavigation()
         const [date, setDate] = useState(new Date())
         const [open, setOpen] = useState(false)
+        const refRBSheet = useRef();
+
 
 
         return(
@@ -22,7 +28,7 @@
 
 
 
-            <View style={{height:"100%",width:"100%" ,backgroundColor:"#635ECD"}}>
+            <View style={{height:"100%",width:"100%" ,backgroundColor:""}}>
 
                 <View style={{height:56,width:"100%" ,justifyContent:"center",backgroundColor:"#635ECD",alignItems:"center"}}>
                     <Text style={{fontSize:20, fontFamily:"Poppins-Bold", color:"white"}} >
@@ -104,7 +110,7 @@
                                 <TouchableOpacity style={{ alignItems:"center",justifyContent:"center",height:46, width:59,backgroundColor:"#F6F6F6", borderRadius:50,}}>
                                     <TextInput.Icon onPress={()=>navigation.navigate("BottomNavigation")} name={() => <Ionicons  color="#8083A3" name="ios-chevron-back" size={20}/>}/>
                                 </TouchableOpacity>
-                                <TouchableOpacity  onPress={()=> navigation.navigate("BottomNavigation")} style={{alignItems:"center",justifyContent:"center",height:46, width:"55%",backgroundColor:"#635ECD", borderRadius:50,}}>
+                                <TouchableOpacity  onPress={() => refRBSheet.current.open()} style={{alignItems:"center",justifyContent:"center",height:46, width:"55%",backgroundColor:"#635ECD", borderRadius:50,}}>
                                    <Text style={{fontFamily:"Inter-Bold", fontSize:16, color:"white"}}>
                                        Submit
                                    </Text>
@@ -112,23 +118,60 @@
                                 <TouchableOpacity style={{ alignItems:"center",justifyContent:"center",height:46, width:59,backgroundColor:"#F6F6F6", borderRadius:50,}}>
                                     <TextInput.Icon onPress={()=>alert("working")} name={() => <Feather  color="#8083A3" name="info" size={20}/>}/>
                                 </TouchableOpacity>
+                                <SafeAreaView>
+
+
+                                <RBSheet
+
+                                    ref={refRBSheet}
+                                    closeOnDragDown={true}
+                                    closeOnPressMask={false}
+                                    customStyles={{
+                                        wrapper: {
+                                            backgroundColor: "transparent"
+                                        },
+                                        draggableIcon: {
+                                            backgroundColor: "#000"
+                                        }
+                                    }}
+                                    height={443}
+                                >
+                                    <View style={{height:"100%", width:"100%",backgroundColor:"white"}}>
+
+                                        <View style={{height:252, backgroundColor:"white", marginHorizontal:60, marginTop:50, alignItems:"center"}}>
+
+                                            <MaterialCommunityIcon name={"checkbox-marked-circle-outline"} color="#87FC70" size={100} />
+
+                                            <Text style={{color:"#3CC13B", fontFamily:"Poppins-Bold", fontSize:23, marginTop:15}}>
+                                                SUCCESS
+                                            </Text>
+                                            <Text style={{color:"black", fontFamily:"Poppins-Regular", fontSize:17, marginTop:15, textAlign:"center"}}>
+                                                Video Uploaded Successfully
+                                            </Text>
+
+
+                                        </View>
+                                        <View style={{flex:1, alignItems:"center", marginTop:40}}>
+
+                                            <TouchableOpacity onPress={()=> navigation.navigate("BottomNavigation")} style={{height:50, width:234, backgroundColor:"#635ECD", alignItems:"center", justifyContent:"center", borderRadius:40}}>
+
+                                            <Text style={{color:"white", fontFamily:"Poppins-Bold", fontSize:14}}>
+                                                Go Back to Home
+                                            </Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                </RBSheet>
+                                </SafeAreaView>
                             </View>
                         </View>
-
-
 
                     </View>
 
                 </View>
-
-
             </View>
-
-
             </SafeAreaView>
 
         )
     }
-
-
     export default BasicInfoForm;

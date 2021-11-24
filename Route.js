@@ -30,8 +30,8 @@ const Route =()=> {
     return (
         <NavigationContainer>
             <Stack.Navigator >
-                <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}} />
                 <Stack.Screen name="BottomNavigation" component={BottomNavigation} options={{headerShown:false}} />
+                <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}} />
                 <Stack.Screen name="AnimatedScreen" component={AnimatedScreen} options={{headerShown:false}} />
                 <Stack.Screen name="SignIn" component={SignIn} options={{headerShown:false}} />
                 <Stack.Screen name="News" component={News} options={{headerShown:false}} />

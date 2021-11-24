@@ -127,11 +127,11 @@ class CardViewStack extends Component {
                     {this.state.currentIndex === false ?
 
                     <Animated.View style={{height:"100%", width:"100%", backgroundColor:"rgba(99, 94, 205, 1)", borderRadius:20, justifyContent:"center", alignItems:"center"}}>
-                            <TouchableOpacity onPress={()=> alert("working")} style={{ height:50, width:50}}>
+                            <AnimatedTouchableOpacity onPress={()=> alert("working")} style={{ height:50, width:50}}>
                                 <Text>
                                  check
                                 </Text>
-                            </TouchableOpacity>
+                            </AnimatedTouchableOpacity>
                         </Animated.View>:
                         <Animated.View style={{height:"100%", width:"100%", backgroundColor:"black", borderRadius:20, justifyContent:"center", alignItems:"center"}}>
                             <TouchableOpacity onPress={()=> alert("working")} style={{ height:50, width:50}}>
