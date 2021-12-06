@@ -1,12 +1,9 @@
 import React from "react";
-import {Image, SafeAreaView, Text, View, ScrollView, TouchableOpacity} from "react-native";
-import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import Feather from "react-native-vector-icons/Feather";
-import {TextInput} from "react-native-paper";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import {Image, SafeAreaView, ScrollView, View} from "react-native";
+import {Text} from "react-native";
+const PeopleInfo =({route})=>{
+    const {name, designation} = route.params;
 
-
-const Buddy =()=>{
     return(
         <SafeAreaView style={{backgroundColor:"white"}}>
             <View style={{height: "100%", width: "100%", justifyContent: "center", alignItems: "center",backgroundColor:"white"}}>
@@ -24,11 +21,11 @@ const Buddy =()=>{
                     }}>
 
                         <View style={{
-                            height: 110,
-                            width: 110,
+                            height: 100,
+                            width: 100,
 
                             borderColor: "rgba(99, 94, 205, 1)",
-                            borderRadius: 110 / 2,
+                            borderRadius: 100 / 2,
                             justifyContent: "center",
                             alignItems: "center",
                             backgroundColor: "white",
@@ -44,67 +41,30 @@ const Buddy =()=>{
                                 alignItems: "center"
                             }}>
                                 <Image style={{height: "100%", width: "100%", borderRadius: 200}}
-                                       source={require("../Images/buddy2.png")}/>
+                                       source={require("./Images/buddy2.png")}/>
                             </View>
                         </View>
                         <View style={{marginTop: 9, alignItems:"center"}}>
                             <Text style={{fontFamily: "Poppins-Bold", fontSize: 20, color: "black"}}>
-                                Sibghatullah Gillani
+                                {name}
                             </Text>
                             <Text style={{fontSize: 17, fontFamily: "Poppins-Regular",fontWeight:"500", color: "black"}}>
-                                Lead Frontend
+                                {designation}
                             </Text>
                             <Text style={{fontSize: 13, fontFamily: "Poppins-Regular", color: "black", marginTop:2}}>
                                 Cutomer Products
                             </Text>
                         </View>
                     </View>
-                    <View style={{flexDirection: "row",justifyContent:"center",marginTop:10, marginBottom:20}}>
-
-                        <TouchableOpacity style={{
-                            justifyContent: "center",
-                            alignItems: "center",
-                            height: 50,
-                            width: 50,
-                            backgroundColor: "rgba(99, 94, 205, 1)",
-                            borderRadius: 50
-                        }}>
-                            <TextInput.Icon name={() => <SimpleLineIcons name="phone" color="white" size={20}/>}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={{
-
-                            height: 50,
-                            width: 50,
-                            marginLeft:20,
-                            backgroundColor: "rgba(99, 94, 205, 1)",
-                            borderRadius: 50,
-                            justifyContent: "center",
-                            alignItems: "center"
-                        }}>
-                            <TextInput.Icon name={() => <Feather name="message-circle" color="white" size={20}/>}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={{
-                            height: 50,
-                            width: 50,
-                            marginLeft:20,
-                            backgroundColor: "rgba(99, 94, 205, 1)",
-                            borderRadius: 50,
-                            justifyContent: "center",
-                            alignItems: "center"
-                        }}>
-                            <TextInput.Icon name={() => <Ionicons name="person-add-outline" color="white" size={20}/>}/>
-                        </TouchableOpacity>
-
-                    </View>
 
                     <View style={{
-                        height: 410,
                         width: 328,
                         shadowColor: "#000",
                         backgroundColor: "white",
                         borderRadius: 20,
                         alignItems: "center",
                         marginHorizontal:10,
+
                         shadowOffset: {
                             width: 0,
                             height: 1,
@@ -119,11 +79,11 @@ const Buddy =()=>{
                             <Text style={{fontSize:18, fontFamily:"Poppins-Bold", marginTop:20,color:"black"}}>
                                 About
                             </Text>
-
                         </View>
                         <View style={{marginTop: 24}}>
                             <Text style={{marginHorizontal:15,fontFamily: "Poppins-Regular", fontSize: 14, color: "black"}}>
                                 Sibghatullah Gillani is Front End lead at CompanyX for 2 and half years. He is leading Front End Team for Customer products.
+
                             </Text>
                         </View>
                         <View style={{justifyContent: "center", marginTop: 10,alignItems:"center"}}>
@@ -132,19 +92,13 @@ const Buddy =()=>{
                             </Text>
                         </View>
                         <View >
-                         <Image style={{height:200, width:275,borderRadius:8}} source={require("../Images/check.jpg")}/>
-
+                            <Image style={{height:200, marginBottom:10,width:275,borderRadius:8}} source={require("./Images/check.jpg")}/>
                         </View>
                     </View>
-
-
-
-
                 </ScrollView>
-
             </View>
         </SafeAreaView>
-    )
+)
 }
 
-export default Buddy
+export default PeopleInfo

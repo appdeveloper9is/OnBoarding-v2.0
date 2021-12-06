@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Text, SafeAreaView, View, ImageBackground, Image } from "react-native";
+import React, {useEffect} from "react";
+import {Text, SafeAreaView, View, Image} from "react-native";
 
 const Splash = (navigation) => {
     useEffect(() => {
@@ -11,13 +11,19 @@ const Splash = (navigation) => {
     );
 
     return (
-        <SafeAreaView >
-            <View style={{justifyContent:"center", height:"100%", width:"100%"}}>
+        <SafeAreaView>
+            <View style={{justifyContent: "center", height: "100%", width: "100%"}}>
                 <Image source={require("./Images/Logo.png")} style={{
-                    alignSelf:"center",
-                    height:76, width:95,
-                }} />
-                <Text style={{ fontFamily: 'Poppins-Bold', fontSize:36, alignSelf:"center",color:"black", marginTop:33}}>
+                    alignSelf: "center",
+                    height: 76, width: 95,
+                }}/>
+                <Text style={{
+                    fontFamily: 'Poppins-Bold',
+                    fontSize: 36,
+                    alignSelf: "center",
+                    color: "black",
+                    marginTop: 33
+                }}>
                     Onboarding
                 </Text>
             </View>

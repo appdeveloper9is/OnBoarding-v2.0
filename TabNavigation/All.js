@@ -67,6 +67,7 @@ const All=()=>{
                             <View style={{flexDirection:"row" , backgroundColor:"white", borderRadius:8, marginTop:10,  height:72,marginHorizontal:22}}>
                                 <View style={{justifyContent:"center", marginLeft:22, alignItems:"center"}}>
                                     {completed === false?
+
                                     <ProgressCircle
                                         percent={30}
                                         radius={25}
@@ -75,6 +76,7 @@ const All=()=>{
                                         shadowColor="#F2F2F7"
                                         bgColor="#fff"
                                     >
+                                        <Text style={{ fontSize: 12 ,color:"black"}}></Text>
                                     </ProgressCircle>:
                                         <TextInput.Icon style={{}} name={()=><AntDesign name="checkcircle" color="#00C2B2" size={35}/>}/>
 

@@ -22,7 +22,10 @@ const BasicInfoForm = () => {
 
     return (
         <SafeAreaView forceInset={{bottom: 'never'}} style={{backgroundColor: "#635ECD"}}>
+
+
             <View style={{height: "100%", width: "100%", backgroundColor: ""}}>
+
                 <View style={{
                     height: 56,
                     width: "100%",
@@ -38,6 +41,7 @@ const BasicInfoForm = () => {
                 <View style={{flex: 1, backgroundColor: "white", borderTopStartRadius: 20, borderTopEndRadius: 20}}>
 
                     <ScrollView>
+
                         <View style={{marginBottom: 30}}>
 
                             <View style={{height: 52, marginTop: 33, marginHorizontal: 25}}>
@@ -110,6 +114,7 @@ const BasicInfoForm = () => {
                             </View>
                         </View>
                     </ScrollView>
+
                     <View style={{height: "14%", backgroundColor: "white"}}>
                         <View style={{
                             backgroundColor: "white", shadowColor: "#000",
@@ -160,10 +165,10 @@ const BasicInfoForm = () => {
                                     backgroundColor: "#F6F6F6",
                                     borderRadius: 50,
                                 }}>
-                                    <TextInput.Icon onPress={() => this.RBSheet.open()}
+                                    <TextInput.Icon onPress={() => alert("working")}
                                                     name={() => <Feather color="#8083A3" name="info" size={20}/>}/>
                                 </TouchableOpacity>
-
+                                <SafeAreaView>
 
 
                                     <RBSheet
@@ -179,7 +184,7 @@ const BasicInfoForm = () => {
                                                 backgroundColor: "#000"
                                             }
                                         }}
-                                        height={400}
+                                        height={443}
                                     >
                                         <View style={{height: "100%", width: "100%", backgroundColor: "white"}}>
 
@@ -189,7 +194,6 @@ const BasicInfoForm = () => {
                                                 marginHorizontal: 60,
                                                 marginTop: 50,
                                                 alignItems: "center"
-
                                             }}>
 
                                                 <MaterialCommunityIcon name={"checkbox-marked-circle-outline"}
@@ -206,7 +210,7 @@ const BasicInfoForm = () => {
                                                 <Text style={{
                                                     color: "black",
                                                     fontFamily: "Poppins-Regular",
-                                                    fontSize: 18,
+                                                    fontSize: 17,
                                                     marginTop: 15,
                                                     textAlign: "center"
                                                 }}>
@@ -215,88 +219,7 @@ const BasicInfoForm = () => {
 
 
                                             </View>
-
-                                                <View
-                                                    style={{flex: 1, alignItems: "center", justifyContent:"center"}}>
-
-                                                    <TouchableOpacity
-                                                        onPress={() => navigation.navigate("BottomNavigation")} style={{
-                                                        height: 50,
-                                                        width: 234,
-                                                        backgroundColor: "#635ECD",
-                                                        alignItems: "center",
-                                                        justifyContent: "center",
-                                                        borderRadius: 40,
-                                                        marginBottom:"15%"
-                                                    }}>
-
-                                                        <Text style={{
-                                                            color: "white",
-                                                            fontFamily: "Poppins-Bold",
-                                                            fontSize: 14
-                                                        }}>
-                                                            Go Back to Home
-                                                        </Text>
-
-                                                    </TouchableOpacity>
-                                                </View>
-
-                                        </View>
-                                    </RBSheet>
-                                    <RBSheet
-
-                                        ref={ref => {
-                                            this.RBSheet = ref;
-                                        }}
-                                        closeOnDragDown={true}
-                                        closeOnPressMask={false}
-                                        customStyles={{
-                                            wrapper: {
-                                                backgroundColor: "transparent"
-                                            },
-                                            draggableIcon: {
-                                                backgroundColor: "#000"
-                                            }
-                                        }}
-                                        height={600}
-                                    >
-                                        <View style={{height: "100%", width: "100%", backgroundColor: "white"}}>
-
-                                            <View style={{
-                                                height: 331,
-                                                backgroundColor: "white",
-                                                marginHorizontal: 60,
-                                                marginTop: 30,
-                                                alignItems: "center",
-                                            }}>
-
-                                                <Feather name={"info"} color="#3E66FB" size={100}/>
-
-                                                <Text style={{
-                                                    color: "black",
-                                                    fontFamily: "Poppins-Regular",
-                                                    fontSize: 18,
-                                                    marginTop: 15,
-                                                    textAlign: "center"
-                                                }}>
-                                                    This is a video intro in whic you are required to introduce your
-                                                    self in a short 90 second video. {"\n\n"}
-
-                                                    Make it interesting by adding a little back story. Starting with a
-                                                    little history and the things you have worked on your strengths and
-                                                    how you fit into VisionX
-                                                </Text>
-
-
-                                            </View>
-                                            <View style={{
-                                                flex: 1,
-                                                alignItems: "center",
-                                                marginTop: 40,
-                                                justifyContent: "flex-end",
-                                                marginBottom: "15%"
-                                            }}>
-
+                                            <View style={{flex: 1, alignItems: "center", marginTop: 40}}>
 
                                                 <TouchableOpacity
                                                     onPress={() => navigation.navigate("BottomNavigation")} style={{
@@ -315,12 +238,11 @@ const BasicInfoForm = () => {
                                                     }}>
                                                         Go Back to Home
                                                     </Text>
-
                                                 </TouchableOpacity>
                                             </View>
                                         </View>
                                     </RBSheet>
-
+                                </SafeAreaView>
                             </View>
                         </View>
 

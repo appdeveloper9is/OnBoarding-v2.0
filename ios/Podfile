@@ -20,6 +20,10 @@ target 'OnBoarding' do
 
   pod 'react-native-element-dropdown', :path => '../node_modules/react-native-element-dropdown'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'OnBoardingTests' do
     inherit! :complete
     # Pods for testing

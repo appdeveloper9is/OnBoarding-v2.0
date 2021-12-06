@@ -1,45 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {FlatList, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
+import axios from "axios";
 
 const People =()=>{
     const navigation = useNavigation()
-    const data = [
-        {
-            name: "James Torff",
-            email: "Full Stack developer",
+    const [dat, setData] = useState([]);
+    console.log("PeoplApi", dat)
+    const getApidata = async () => {
+        try {
+            await axios.get('https://tvrj97vxf0.execute-api.us-east-1.amazonaws.com/dev/all-employees').then((response) => {
 
+                setData(response.data)
+            })
+                .catch((error) => {
+                    console.log(error);
+                });
 
-        },
-        {
-            name: "Tekken Tournament held at VisionX",
-            email: "2 days ago",
-            },
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
-        {
-            name: "Tekken Tournament held at VisionX",
-            email: "1 day ago",
+    useEffect(() => {
+        getApidata();
+    }, [dat]);
 
-
-        },
-        {
-            name: "Video",
-            email: "1 day ago",
-
-
-        },
-        {
-            name: "Buddy Info",
-            email: "1 day passed",
-
-
-        },
-        {
-            name: "Video",
-            email: "1 day passed",
-        },
-
-    ]
 
 
     return(
@@ -65,14 +51,17 @@ const People =()=>{
                 </View>
 
                 <FlatList
-                    data={data}
+                    data={dat}
                     keyExtractor={item => item.id}
                     renderItem={({item, index}) => {
                         return (
 
                             <TouchableOpacity
                                 onPress={() => {
-                                navigation.navigate("MyProfile")
+                                navigation.navigate("PeopleInfo", {
+                                    name: item.employee_name,
+                                    designation:item.designation ,
+                                })
 
                                 }}>
                                 <View style={{flexDirection:"row" , backgroundColor:"white", borderRadius:8, marginTop:0, marginLeft:20, height:72, width:365}}>
@@ -81,10 +70,10 @@ const People =()=>{
                                     </View>
                                     <View style={{ marginLeft:28, backgroundColor:"white", height:"100%",width:220, justifyContent:"center"}}>
                                         <Text style={{lineHeight:16*1.5,fontFamily:"Poppins-Bold", fontSize:16, color:"black", width:"100%", justifyContent:"center"}}>
-                                            {item.name}
+                                            {item.employee_name}
                                         </Text>
                                         <Text style={{fontSize:12, fontFamily:"Poppins-Regular",color:"black"}}>
-                                            {item.email}
+                                            {item.designation}
                                         </Text>
                                     </View>
                                 </View>

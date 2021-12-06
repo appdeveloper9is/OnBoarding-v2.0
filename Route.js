@@ -23,6 +23,7 @@ import Video from "./Forms/Video";
 import VideoUpload from "./Forms/VideoUpload";
 import News from "./BottomNavigation/DiscoverTabs/News";
 import People from "./BottomNavigation/DiscoverTabs/People";
+import PeopleInfo from "./BottomNavigation/DiscoverTabs/PeopleInfo";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,13 @@ const Route =()=> {
         <NavigationContainer>
             <Stack.Navigator >
                 <Stack.Screen name="BottomNavigation" component={BottomNavigation} options={{headerShown:false}} />
+                <Stack.Screen name="PeopleInfo" component={PeopleInfo} options={{ title:"Employee Profile", headerTitleStyle:{fontSize:22, fontFamily:"Poppins-Bold"},headerShown:true, headerTitleAlign:"center", headerShadowVisible:false, headerStyle:{backgroundColor:"white",borderBottomWidth: 0}, headerLeft: () => (
+                        <TouchableOpacity
+                            onPress={() => alert('This is a button!')}
+                        >
+                            <TextInput.Icon style={{marginBottom:30}} name={()=> <AntDesign name="arrowleft" color="black" size={20}/>}/>
+                        </TouchableOpacity>
+                    ),}} />
                 <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}} />
                 <Stack.Screen name="AnimatedScreen" component={AnimatedScreen} options={{headerShown:false}} />
                 <Stack.Screen name="SignIn" component={SignIn} options={{headerShown:false}} />

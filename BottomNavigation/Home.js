@@ -53,15 +53,23 @@ const Home = () => {
                     borderBottomEndRadius: 20,
                     borderBottomStartRadius: 20
                 }}>
-                    <View style={{height:112, backgroundColor:"white", flexDirection:"row", justifyContent:"center", alignItems:"center",marginHorizontal:30}}>
+                    <View style={{
+                        height: 150,
+                        backgroundColor: "white",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginHorizontal: 30
+                    }}>
 
                         <View style={{
                             height: 100,
                             width: 100,
+
                             borderColor: "rgba(99, 94, 205, 1)",
                             borderRadius: 100 / 2,
-                            justifyContent:"center",
-                            alignItems:"center",
+                            justifyContent: "center",
+                            alignItems: "center",
                             backgroundColor: "white",
                         }}>
                             <View style={{
@@ -73,11 +81,11 @@ const Home = () => {
                                 justifyContent: "center",
                                 alignItems: "center"
                             }}>
-                                <Image style={{height: "100%", width: "100%", borderRadius: 200, marginTop: 4}}
-                                       source={require("../Images/Person.png")}/>
+                                <Image style={{height: "100%", width: "100%", borderRadius: 200}}
+                                       source={require("../Images/profile.png")}/>
                             </View>
                         </View>
-                        <View style={{marginLeft: 28, justifyContent:"center"}}>
+                        <View style={{marginLeft: 28, justifyContent: "center"}}>
                             <Text style={{fontFamily: "Poppins-Bold", fontSize: 28, color: "black"}}>
                                 Jane Doe
                             </Text>
@@ -121,7 +129,8 @@ const Home = () => {
                                                       <View style={{
                                                           backgroundColor: "white",
                                                           borderRadius: 8,
-                                                          height: 200
+
+                                                          height: "50%"
                                                       }}>
                                                           <View style={{justifyContent: "center", marginLeft: 24}}>
                                                               <Image
