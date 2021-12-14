@@ -16,10 +16,7 @@ const AddOtherDetail =()=>{
     return(
         <SafeAreaView forceInset={{ bottom: 'never'}}  style={{backgroundColor:"#635ECD"}}>
 
-
-
-
-        <View style={{height:"100%",width:"100%" ,backgroundColor:"#635ECD"}}>
+            <View style={{height:"100%",width:"100%" ,backgroundColor:"#635ECD"}}>
             <View style={{height:56,width:"100%" ,justifyContent:"center",backgroundColor:"#635ECD",alignItems:"center"}}>
                 <Text style={{fontSize:20, fontFamily:"Poppins-Bold", color:"white"}} >
                     Educational Details

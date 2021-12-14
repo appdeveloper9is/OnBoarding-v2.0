@@ -20,7 +20,7 @@ import ToggleSwitch from 'toggle-switch-react-native'
 import {useNavigation} from "@react-navigation/native";
 import {SafeAreaView} from "react-navigation";
 
-const EducationalDetails =()=> {
+const EducationalDetail =()=> {
     const countries = ["Egypt", "Canada", "Australia", "Ireland"]
     const navigation = useNavigation()
     const data = [
@@ -275,4 +275,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default EducationalDetails;
+export default EducationalDetail;

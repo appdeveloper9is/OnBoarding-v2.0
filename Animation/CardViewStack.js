@@ -1,9 +1,6 @@
 import React, {Component, useState} from 'react';
 import {PanResponder, Animated, View, Text, TouchableOpacity, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import ProgressCircle from "react-native-progress-circle";
-import {TextInput} from "react-native-paper";
-import AntDesign from "react-native-vector-icons/AntDesign";
 import CircularProgress from 'react-native-circular-progress-indicator';
 
 class CardViewStack extends Component {
@@ -66,17 +63,16 @@ class CardViewStack extends Component {
     render() {
 
 
-        const colors = ['red', '#009688', 'red'];
+
         console.log("hacker", this.state.currentIndex)
 
-
         return (
-            <View style={{height: "25%", backgroundColor: "white", justifyContent: "center", alignItems: "center"}}>
+            <View style={{justifyContent:"center", alignItems:"center"}}>
 
                 <Animated.View
                     style={{
                         width: 300, height: 180,
-                        position: 'absolute',
+                         position: 'absolute',
                         borderRadius: 20,
                         backgroundColor: this.state.currentIndex === false ? "#1AD5FD" :"#FFBB54" ,
                         zIndex: 1,
@@ -93,10 +89,6 @@ class CardViewStack extends Component {
                         }),
 
                     }}>
-
-
-
-
                 </Animated.View>
 
                 <Animated.View
@@ -106,7 +98,7 @@ class CardViewStack extends Component {
                         width: 300, height: 170,
                         position: 'absolute',
                         borderRadius: 20,
-                        backgroundColor: "red",
+
                         zIndex: this.state.cardsStackedAnim.interpolate({
                             inputRange: [0, 0.5, 1], outputRange: [3, 2, 0]
                         }),
@@ -129,7 +121,7 @@ class CardViewStack extends Component {
                 >
                     {this.state.currentIndex === false ?
 
-                    <Animated.View style={{height:"100%", backgroundColor:"rgba(99, 94, 205, 1)", borderRadius:20, justifyContent:"center", alignItems:"center",shadowOffset: {
+                    <Animated.View style={{ backgroundColor:"rgba(99, 94, 205, 1)", borderRadius:20, justifyContent:"center", alignItems:"center",shadowOffset: {
                             width: 0,
                             height: 1,
                         },
@@ -179,7 +171,7 @@ class CardViewStack extends Component {
                         </LinearGradient>
                         </Animated.View>:
 
-                        <Animated.View style={{height:"100%", backgroundColor:"rgba(99, 94, 205, 1)", borderRadius:20, justifyContent:"center", alignItems:"center",shadowOffset: {
+                        <Animated.View style={{ backgroundColor:"rgba(99, 94, 205, 1)", borderRadius:20, justifyContent:"center", alignItems:"center",shadowOffset: {
                                 width: 0,
                                 height: 1,
                             },
@@ -243,13 +235,9 @@ class CardViewStack extends Component {
                                             <Text style={{fontFamily:"Poppins-Bold", fontSize:12,color:"white",marginTop:5}}>
                                                 14
                                             </Text>
-
                                         </View>
-
                                     </View>
-
                                 </View>
-
                             </LinearGradient>
                         </Animated.View>
                     }

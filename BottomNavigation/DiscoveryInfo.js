@@ -21,7 +21,6 @@ const DiscoveryInfo=()=>{
                                     <TextInput.Icon onPress={()=>navigation.navigate("BottomNavigation")} name={() => <AntDesign  color="black" name="arrowleft" size={20}/>}/>
                                 </TouchableOpacity>
                             </View>
-
                         </FastImage>
                         <View style={{height:"100%", justifyContent:"center", flexDirection:"row", marginHorizontal:24,marginTop:25}}>
                             <View>

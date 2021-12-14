@@ -1,39 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {FlatList, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import axios from "axios";
+import BlogContext from "../../ContextApi/ApiData";
 
-const People =()=>{
+const People = () => {
     const navigation = useNavigation()
-    const [dat, setData] = useState([]);
-    console.log("PeoplApi", dat)
-    const getApidata = async () => {
-        try {
-            await axios.get('https://tvrj97vxf0.execute-api.us-east-1.amazonaws.com/dev/all-employees').then((response) => {
+   const {dat} = useContext(BlogContext)
+    return (
 
-                setData(response.data)
-            })
-                .catch((error) => {
-                    console.log(error);
-                });
-
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    useEffect(() => {
-        getApidata();
-    }, [dat]);
-
-
-
-    return(
-
-        <SafeAreaView >
-            <View style={{height:"100%", width:"100%", backgroundColor:"white", shadowRadius:  2,shadowColor: "#000",
+        <SafeAreaView>
+            <View style={{
+                height: "100%", width: "100%", backgroundColor: "white", shadowRadius: 2, shadowColor: "#000",
             }}>
-                <View style={{ overflow: 'hidden', paddingBottom: 5 }}>
+                <View style={{overflow: 'hidden', paddingBottom: 5}}>
                     <View
 
                         style={{
@@ -41,8 +21,8 @@ const People =()=>{
                             width: "100%",
                             height: 1,
                             shadowColor: '#000',
-                            shadowOffset: { width: 1, height: 1 },
-                            shadowOpacity:  0.4,
+                            shadowOffset: {width: 1, height: 1},
+                            shadowOpacity: 0.4,
                             shadowRadius: 3,
                             elevation: 5,
                         }}
@@ -51,6 +31,7 @@ const People =()=>{
                 </View>
 
                 <FlatList
+
                     data={dat}
                     keyExtractor={item => item.id}
                     renderItem={({item, index}) => {
@@ -58,21 +39,42 @@ const People =()=>{
 
                             <TouchableOpacity
                                 onPress={() => {
-                                navigation.navigate("PeopleInfo", {
-                                    name: item.employee_name,
-                                    designation:item.designation ,
-                                })
+                                    navigation.navigate("PeopleInfo", {
+                                        name: item.employee_name,
+                                        designation: item.designation,
+                                    })
 
                                 }}>
-                                <View style={{flexDirection:"row" , backgroundColor:"white", borderRadius:8, marginTop:0, marginLeft:20, height:72, width:365}}>
-                                    <View style={{justifyContent:"center"}}>
-                                        <Image source={require("../DiscoverTabs/Images/check.jpg")} style={{height:48,width:48, borderRadius:24}}/>
+                                <View style={{
+                                    flexDirection: "row",
+                                    backgroundColor: "white",
+                                    borderRadius: 8,
+                                    marginTop: 0,
+                                    height: 72,
+                                    marginHorizontal:"10%"
+
+                                }}>
+                                    <View style={{justifyContent: "center"}}>
+                                        <Image source={require("../DiscoverTabs/Images/check.jpg")}
+                                               style={{height: 48, width: 48, borderRadius: 24}}/>
                                     </View>
-                                    <View style={{ marginLeft:28, backgroundColor:"white", height:"100%",width:220, justifyContent:"center"}}>
-                                        <Text style={{lineHeight:16*1.5,fontFamily:"Poppins-Bold", fontSize:16, color:"black", width:"100%", justifyContent:"center"}}>
+                                    <View style={{
+                                        marginLeft: 28,
+                                        backgroundColor: "white",
+                                        height: "100%",
+                                        justifyContent: "center"
+                                    }}>
+                                        <Text style={{
+                                            lineHeight: 16 * 1.5,
+                                            fontFamily: "Poppins-Bold",
+                                            fontSize: 16,
+                                            color: "black",
+                                            width: "100%",
+                                            justifyContent: "center"
+                                        }}>
                                             {item.employee_name}
                                         </Text>
-                                        <Text style={{fontSize:12, fontFamily:"Poppins-Regular",color:"black"}}>
+                                        <Text style={{fontSize: 12, fontFamily: "Poppins-Regular", color: "black"}}>
                                             {item.designation}
                                         </Text>
                                     </View>

@@ -1,23 +1,26 @@
-import React, {useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import {Button, KeyboardAvoidingView, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {TextInput} from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
-import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import DatePicker from 'react-native-date-picker'
 import {useNavigation} from "@react-navigation/native";
 import {SafeAreaView} from "react-navigation";
 import RBSheet from "react-native-raw-bottom-sheet";
 import MaterialCommunityIcon from "react-native-paper/src/components/MaterialCommunityIcon";
-import {Icon} from "react-native-elements";
+import axios from "axios";
+import {FlatList} from "react-native";
+import BlogContext from "../ContextApi/ApiData";
 
 
-const BasicInfoForm = () => {
+
+const BasicInfoForm = ({route}) => {
     const navigation = useNavigation()
     const [date, setDate] = useState(new Date())
     const [open, setOpen] = useState(false)
+    const {name} = route.params;
     const refRBSheet = useRef();
+    const {data} = useContext(BlogContext)
+
 
 
     return (
@@ -30,85 +33,54 @@ const BasicInfoForm = () => {
                     backgroundColor: "#635ECD",
                     alignItems: "center"
                 }}>
+
                     <Text style={{fontSize: 20, fontFamily: "Poppins-Bold", color: "white"}}>
-                        Basic Info form
+                        {name}
                     </Text>
                 </View>
 
                 <View style={{flex: 1, backgroundColor: "white", borderTopStartRadius: 20, borderTopEndRadius: 20}}>
+                                 <FlatList
+                                            style={{backgroundColor: "white", marginHorizontal: 20}}
+                                            data={data}
+                                            keyExtractor={item => item.id}
+                                            renderItem={({item, index}) => {
 
+
+                                                return (
+
+
+                                                        <View style={{marginTop: 20}}>
+
+                                                            { item.form_name === name ?
+
+
+                                                                    item.form_fields.map((c, i) =>
+                                                                        <View style={{
+                                                                            backgroundColor: "white",
+                                                                            marginHorizontal: 10
+                                                                        }}>
+
+
+                                                                            <TextInput
+                                                                                style={{
+                                                                                    backgroundColor: "white",
+                                                                                    marginBottom: 20
+                                                                                }}
+                                                                                activeOutlineColor="gray"
+                                                                                placeholder={c.name}
+                                                                                label={c.name} mode="outlined">
+                                                                            </TextInput>
+                                                                        </View>) :
+                                                                null
+                                                            }
+                                                        </View>
+
+                                                    );
+
+                                            }}
+                                        />
                     <ScrollView>
-                        <View style={{marginBottom: 30}}>
-
-                            <View style={{height: 52, marginTop: 33, marginHorizontal: 25}}>
-                                <TextInput style={{backgroundColor: "white"}} activeOutlineColor="#3E66FB"
-                                           placeholderTextColor="#808084" placeholder="Name" label="Name"
-                                           mode="outlined">
-                                </TextInput>
-                            </View>
-                            <View style={{height: 52, marginTop: 33, marginHorizontal: 25, backgroundColor: "white"}}>
-                                <TextInput style={{backgroundColor: "white"}} activeOutlineColor="#3E66FB"
-                                           placeholder="Fathers Name" label="Fathers Name" mode="outlined">
-                                </TextInput>
-                            </View>
-                            <View style={{height: 52, marginTop: 33, marginHorizontal: 25}}>
-                                <TextInput style={{backgroundColor: "white"}} activeOutlineColor="#3E66FB"
-                                           placeholder="CNIC" label="CNIC" mode="outlined">
-                                </TextInput>
-                            </View>
-                            <View style={{height: 52, marginTop: 33, marginHorizontal: 25}}>
-                                <TextInput style={{backgroundColor: "white"}} activeOutlineColor="#3E66FB"
-                                           right={<TextInput.Icon
-                                               name={() => <SimpleLineIcons onPress={() => setOpen(true)}
-                                                                            name="calendar" color="black"
-                                                                            size={18}/>}/>}
-                                           placeholder="Enter or pick date" label="Enter or pick date" mode="outlined">
-                                    <DatePicker
-                                        modal
-                                        open={open}
-                                        date={date}
-                                        onConfirm={(date) => {
-                                            setOpen(false)
-                                            setDate(date)
-                                        }}
-                                        onCancel={() => {
-                                            setOpen(false)
-                                        }}/>
-                                </TextInput>
-                            </View>
-                            <View style={{height: 52, marginTop: 33, marginHorizontal: 25}}>
-                                <TextInput style={{backgroundColor: "white"}} activeOutlineColor="gray"
-                                           placeholder="Email" label="Email" mode="outlined">
-                                </TextInput>
-                            </View>
-                            <View style={{flex: 1, backgroundColor: 'white', marginTop: 53}}>
-                                <View style={{backgroundColor: "white", marginHorizontal: 25}}>
-
-                                    <TextInput.Icon style={{marginTop: 12}}
-                                                    name={() => <FontAwesome color="black" name="bank" size={15}/>}/>
-                                    <Text style={{
-                                        marginLeft: 40,
-                                        fontSize: 20,
-                                        fontFamily: "Poppins-Bold",
-                                        color: "black"
-                                    }}>
-                                        Bank Details
-                                    </Text>
-                                </View>
-                                <View style={{height: 52, marginTop: 16, marginHorizontal: 25}}>
-                                    <TextInput style={{backgroundColor: "white"}} activeOutlineColor="gray"
-                                               placeholder="Email" label="Email" mode="outlined">
-                                    </TextInput>
-                                </View>
-                                <View style={{height: 52, marginTop: 33, marginHorizontal: 25}}>
-                                    <TextInput style={{backgroundColor: "white"}} activeOutlineColor="gray"
-                                               placeholder="Email" label="Email" mode="outlined">
-                                    </TextInput>
-                                </View>
-
-
-                            </View>
-                        </View>
                     </ScrollView>
                     <View style={{height: "14%", backgroundColor: "white"}}>
                         <View style={{
@@ -164,9 +136,7 @@ const BasicInfoForm = () => {
                                                     name={() => <Feather color="#8083A3" name="info" size={20}/>}/>
                                 </TouchableOpacity>
 
-
-
-                                    <RBSheet
+                                <RBSheet
 
                                         ref={refRBSheet}
                                         closeOnDragDown={true}
@@ -329,7 +299,6 @@ const BasicInfoForm = () => {
                 </View>
             </View>
         </SafeAreaView>
-
     )
 }
 export default BasicInfoForm;

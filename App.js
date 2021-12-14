@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {SafeAreaView} from "react-navigation";
 import {FlatList, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {TextInput} from "react-native-paper";
@@ -9,6 +9,8 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import MaterialCommunityIcon from "react-native-paper/src/components/MaterialCommunityIcon";
 import axios from "axios";
 import Route from "./Route";
+import {BlogProvider} from "./ContextApi/ApiData";
+
 
 
 const App = () => {
@@ -39,8 +41,15 @@ const App = () => {
     // const [open, setOpen] = useState(false)
     // const refRBSheet = useRef();
     //
+
     return (
+        <BlogProvider>
+
+
+
         <Route/>
+        </BlogProvider>
+
 
     //
     //     <SafeAreaView forceInset={{bottom: 'never'}} style={{backgroundColor: "#635ECD"}}>

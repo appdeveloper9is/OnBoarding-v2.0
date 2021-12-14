@@ -2,14 +2,15 @@ import React from "react";
 import {FlatList, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
 import ProgressCircle from "react-native-progress-circle";
 import {useNavigation} from "@react-navigation/native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 const News =()=>{
     const navigation = useNavigation()
 
     const data = [
         {
-            name: "VisionX just got selected for" +
-                "P@sha ICT awards",
+            name: "VisionX just got selected for P@sha ICT awards ",
             email: "2 days ago",
 
 
@@ -66,7 +67,7 @@ const News =()=>{
                     />
                 </View>
 
-                <FlatList
+                <FlatList style={{marginHorizontal:"6%"}}
                     data={data}
                     keyExtractor={item => item.id}
                     renderItem={({item, index}) => {
@@ -77,15 +78,15 @@ const News =()=>{
                                     navigation.navigate("DiscoveryInfo")
 
                                 }}>
-                                <View style={{flexDirection:"row" , backgroundColor:"white", borderRadius:8, marginTop:10, marginLeft:20, height:72, width:365}}>
+                                <View style={{flexDirection:"row" ,borderRadius:8, marginTop:10}}>
                                     <View style={{justifyContent:"center"}}>
                                        <Image source={require("../DiscoverTabs/Images/check.jpg")} style={{height:72,width:72, borderRadius:8}}/>
                                     </View>
-                                    <View style={{ marginLeft:28, backgroundColor:"white", height:"100%",width:220, justifyContent:"center"}}>
-                                        <Text style={{lineHeight:16*1.5,fontFamily:"Poppins-Bold", fontSize:16, color:"black", width:"100%", justifyContent:"center"}}>
+                                    <View style={{flex:1, justifyContent:"center", marginLeft:12}}>
+                                        <Text style={{fontFamily:"Poppins-Bold",  fontSize:14, color:"black", justifyContent:"center"}}>
                                             {item.name}
                                         </Text>
-                                        <Text style={{fontSize:12, fontFamily:"Poppins-Regular",color:"black"}}>
+                                        <Text style={{ fontSize: 9, fontFamily:"Poppins-Regular",color:"black"}}>
                                             {item.email}
                                         </Text>
                                     </View>
