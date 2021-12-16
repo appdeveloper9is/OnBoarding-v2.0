@@ -13,68 +13,64 @@ class CardViewStack extends Component {
             currentIndex: true,
         };
 
-                this.cardsPanResponder = PanResponder.create( {
-                onStartShouldSetPanResponder: () => true,
-                onStartShouldSetPanResponderCapture: () => false,
-                onMoveShouldSetPanResponder: () => true,
-                onMoveShouldSetPanResponderCapture: () => true,
-                onPanResponderMove: ( event, gestureState ) => {
+        this.cardsPanResponder = PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onStartShouldSetPanResponderCapture: () => false,
+            onMoveShouldSetPanResponder: () => true,
+            onMoveShouldSetPanResponderCapture: () => true,
+            onPanResponderMove: (event, gestureState) => {
 
 
-                },
-                onPanResponderTerminationRequest: () => false,
-                onPanResponderRelease: ( event, gestureState ) => {
-                    // bring the translationX back to 0
+            },
+            onPanResponderTerminationRequest: () => false,
+            onPanResponderRelease: (event, gestureState) => {
+                // bring the translationX back to 0
 
-                    let x = gestureState.dx;
-                    let y = gestureState.dy;
-                    if (Math.abs(x) > Math.abs(y)) {
-                        if (x >= 0) {
+                let x = gestureState.dx;
+                let y = gestureState.dy;
+                if (Math.abs(x) > Math.abs(y)) {
+                    if (x >= 0) {
 
-                            Animated.timing( this.state.cardsPan, {
-                                toValue: 0,
-                                duration: 300,
-                            } ).start();
-                            // will be used to interpolate values in each view
-                            Animated.timing( this.state.cardsStackedAnim, {
+                        Animated.timing(this.state.cardsPan, {
+                            toValue: 0,
+                            duration: 300,
+                        }).start();
+                        // will be used to interpolate values in each view
+                        Animated.timing(this.state.cardsStackedAnim, {
 
-                                toValue: 1,
-                                duration: 300,
-                            } ).start( () => {
-                                    // reset cardsStackedAnim's value to 0 when animation ends
-                                    this.state.cardsStackedAnim.setValue(0);
-                                    // increment card position when animation ends
-                                    this.setState({
-                                        currentIndex: this.state.currentIndex === false,
-                                    });
-
-
-                                }
-                            );
+                            toValue: 1,
+                            duration: 300,
+                        }).start(() => {
+                                // reset cardsStackedAnim's value to 0 when animation ends
+                                this.state.cardsStackedAnim.setValue(0);
+                                // increment card position when animation ends
+                                this.setState({
+                                    currentIndex: this.state.currentIndex === false,
+                                });
 
 
-                        }
+                            }
+                        );
+
+
                     }
+                }
 
-                    },
-            } )
+            },
+        })
     }
 
     render() {
 
-
-
-        console.log("hacker", this.state.currentIndex)
-
         return (
-            <View style={{justifyContent:"center", alignItems:"center"}}>
+            <View style={{justifyContent: "center", alignItems: "center"}}>
 
                 <Animated.View
                     style={{
                         width: 300, height: 180,
-                         position: 'absolute',
+                        position: 'absolute',
                         borderRadius: 20,
-                        backgroundColor: this.state.currentIndex === false ? "#1AD5FD" :"#FFBB54" ,
+                        backgroundColor: this.state.currentIndex === false ? "#1AD5FD" : "#FFBB54",
                         zIndex: 1,
                         bottom: this.state.cardsStackedAnim.interpolate({
                             inputRange: [0, 1], outputRange: [20, 0]
@@ -121,81 +117,124 @@ class CardViewStack extends Component {
                 >
                     {this.state.currentIndex === false ?
 
-                    <Animated.View style={{ backgroundColor:"rgba(99, 94, 205, 1)", borderRadius:20, justifyContent:"center", alignItems:"center",shadowOffset: {
-                            width: 0,
-                            height: 1,
-                        },
-                        shadowOpacity: 0.25,
-                        shadowRadius: 3.84,
-                        shadowColor:"rgba(255, 101, 8, 0.79)",
-
-                        elevation: 5,}}>
-                        <LinearGradient colors={["#FFBB54", "#FD9053"]} style={{height:"100%", width:"100%",borderRadius:20,shadowOffset: {
-                                width: 0,
-                                height: 1,
-                            },
-                            shadowOpacity: 1,
-                            shadowRadius: 3,
-                            shadowColor:"rgba(255, 153, 0, 1)",
-
-                            elevation: 5, }} >
-                            <View style={{ alignItems:"center", marginTop:12}}>
-                                <Text style={{fontSize:15, fontFamily:"Poppins-Regular", marginTop:8, color:"white"}} >
-                                 Buddy
-                                </Text>
-                            </View>
-                            <View style={{flex:1}}>
-                                <View style={{height:96, marginHorizontal:12, flexDirection:"row"}
-
-                                }>
-                                    <View style={{height:95, width:95}}>
-                                        <Image source={require("../Images/buddy2.png")} style={{height:"100%", width:"100%", borderRadius:96/2}}/>
-                                    </View>
-                                    <View  style={{flex:1, justifyContent:"center", paddingLeft:10}}>
-                                        <Text style={{fontFamily:"Poppins-Bold", fontSize:14, color:"white"}}>
-                                            Sibghatullah Gillani
-                                        </Text>
-                                        <Text style={{fontFamily:"Poppins-Regular", fontSize:14,color:"white", marginTop:5}}>
-                                            Lead Frontend
-                                        </Text>
-                                        <Text style={{fontFamily:"Poppins-Regular", fontSize:14,color:"white",marginTop:5}}>
-                                            Cutomer Products
-                                        </Text>
-
-                                    </View>
-
-                                </View>
-
-                            </View>
-
-                        </LinearGradient>
-                        </Animated.View>:
-
-                        <Animated.View style={{ backgroundColor:"rgba(99, 94, 205, 1)", borderRadius:20, justifyContent:"center", alignItems:"center",shadowOffset: {
+                        <Animated.View style={{
+                            backgroundColor: "rgba(99, 94, 205, 1)",
+                            borderRadius: 20,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            shadowOffset: {
                                 width: 0,
                                 height: 1,
                             },
                             shadowOpacity: 0.25,
                             shadowRadius: 3.84,
-                            shadowColor:"#1AD5FD",
+                            shadowColor: "rgba(255, 101, 8, 0.79)",
 
-                            elevation: 5,}}>
-                            <LinearGradient colors={["#1AD5FD", "#286DFC"]} style={{height:"100%", width:"100%",borderRadius:20,shadowOffset: {
+                            elevation: 5,
+                        }}>
+                            <LinearGradient colors={["#FFBB54", "#FD9053"]} style={{
+                                height: "100%", width: "100%", borderRadius: 20, shadowOffset: {
                                     width: 0,
                                     height: 1,
                                 },
                                 shadowOpacity: 1,
                                 shadowRadius: 3,
-                                shadowColor:"rgba(255, 153, 0, 1)",
+                                shadowColor: "rgba(255, 153, 0, 1)",
 
-                                elevation: 5, }} >
-                                <View style={{ alignItems:"center", marginTop:10}}>
-                                    <Text style={{fontSize:12, fontFamily:"Poppins-Regular", marginTop:7, color:"white"}} >
+                                elevation: 5,
+                            }}>
+                                <View style={{alignItems: "center", marginTop: 12}}>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        fontFamily: "Poppins-Regular",
+                                        marginTop: 8,
+                                        color: "white"
+                                    }}>
+                                        Buddy
+                                    </Text>
+                                </View>
+                                <View style={{flex: 1}}>
+                                    <View style={{height: 96, marginHorizontal: 12, flexDirection: "row"}
+
+                                    }>
+                                        <View style={{height: 95, width: 95}}>
+                                            <Image source={require("../Images/buddy2.png")}
+                                                   style={{height: "100%", width: "100%", borderRadius: 96 / 2}}/>
+                                        </View>
+                                        <View style={{flex: 1, justifyContent: "center", paddingLeft: 10}}>
+                                            <Text style={{fontFamily: "Poppins-Bold", fontSize: 14, color: "white"}}>
+                                                Sibghatullah Gillani
+                                            </Text>
+                                            <Text style={{
+                                                fontFamily: "Poppins-Regular",
+                                                fontSize: 14,
+                                                color: "white",
+                                                marginTop: 5
+                                            }}>
+                                                Lead Frontend
+                                            </Text>
+                                            <Text style={{
+                                                fontFamily: "Poppins-Regular",
+                                                fontSize: 14,
+                                                color: "white",
+                                                marginTop: 5
+                                            }}>
+                                                Cutomer Products
+                                            </Text>
+
+                                        </View>
+
+                                    </View>
+
+                                </View>
+
+                            </LinearGradient>
+                        </Animated.View> :
+
+                        <Animated.View style={{
+                            backgroundColor: "rgba(99, 94, 205, 1)",
+                            borderRadius: 20,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            shadowOffset: {
+                                width: 0,
+                                height: 1,
+                            },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 3.84,
+                            shadowColor: "#1AD5FD",
+
+                            elevation: 5,
+                        }}>
+                            <LinearGradient colors={["#1AD5FD", "#286DFC"]} style={{
+                                height: "100%", width: "100%", borderRadius: 20, shadowOffset: {
+                                    width: 0,
+                                    height: 1,
+                                },
+                                shadowOpacity: 1,
+                                shadowRadius: 3,
+                                shadowColor: "rgba(255, 153, 0, 1)",
+
+                                elevation: 5,
+                            }}>
+                                <View style={{alignItems: "center", marginTop: 10}}>
+                                    <Text style={{
+                                        fontSize: 12,
+                                        fontFamily: "Poppins-Regular",
+                                        marginTop: 7,
+                                        color: "white"
+                                    }}>
                                         Progress OverView
                                     </Text>
                                 </View>
-                                <View style={{flex:1, justifyContent:"center", alignItems:"center",}}>
-                                    <View style={{flex:1, flexDirection:"row", width:"87%", alignItems:"center", justifyContent:"space-around"}
+                                <View style={{flex: 1, justifyContent: "center", alignItems: "center",}}>
+                                    <View style={{
+                                        flex: 1,
+                                        flexDirection: "row",
+                                        width: "87%",
+                                        alignItems: "center",
+                                        justifyContent: "space-around"
+                                    }
 
                                     }>
                                         <View style={{}}>
@@ -213,26 +252,46 @@ class CardViewStack extends Component {
                                             />
 
                                         </View>
-                                        <View  style={{ justifyContent:"center"}}>
-                                            <Text style={{fontFamily:"Poppins-Bold", fontSize:12, color:"white"}}>
+                                        <View style={{justifyContent: "center"}}>
+                                            <Text style={{fontFamily: "Poppins-Bold", fontSize: 12, color: "white"}}>
                                                 OverDue
                                             </Text>
-                                            <Text style={{fontFamily:"Poppins-Bold", fontSize:12,color:"white", marginTop:5}}>
-                                               Pending
+                                            <Text style={{
+                                                fontFamily: "Poppins-Bold",
+                                                fontSize: 12,
+                                                color: "white",
+                                                marginTop: 5
+                                            }}>
+                                                Pending
                                             </Text>
-                                            <Text style={{fontFamily:"Poppins-Bold", fontSize:12,color:"white",marginTop:5}}>
+                                            <Text style={{
+                                                fontFamily: "Poppins-Bold",
+                                                fontSize: 12,
+                                                color: "white",
+                                                marginTop: 5
+                                            }}>
                                                 Complete
                                             </Text>
 
                                         </View>
-                                        <View  style={{justifyContent:"center", alignItems:"center"}}>
-                                            <Text style={{fontFamily:"Poppins-Bold", fontSize:12, color:"white"}}>
-                                               5
+                                        <View style={{justifyContent: "center", alignItems: "center"}}>
+                                            <Text style={{fontFamily: "Poppins-Bold", fontSize: 12, color: "white"}}>
+                                                5
                                             </Text>
-                                            <Text style={{fontFamily:"Poppins-Bold", fontSize:12,color:"white", marginTop:5}}>
-                                               12
+                                            <Text style={{
+                                                fontFamily: "Poppins-Bold",
+                                                fontSize: 12,
+                                                color: "white",
+                                                marginTop: 5
+                                            }}>
+                                                12
                                             </Text>
-                                            <Text style={{fontFamily:"Poppins-Bold", fontSize:12,color:"white",marginTop:5}}>
+                                            <Text style={{
+                                                fontFamily: "Poppins-Bold",
+                                                fontSize: 12,
+                                                color: "white",
+                                                marginTop: 5
+                                            }}>
                                                 14
                                             </Text>
                                         </View>

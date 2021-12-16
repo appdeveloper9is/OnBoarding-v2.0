@@ -1,13 +1,16 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {SafeAreaView, Text, View, StyleSheet, FlatList, TouchableOpacity, Image, ScrollView} from "react-native";
 import {SearchBar} from 'react-native-elements';
 import {useNavigation} from "@react-navigation/native";
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
 import News from "./DiscoverTabs/News";
 import People from "./DiscoverTabs/People";
+import BlogContext from "../ContextApi/ApiData";
+
 
 
 const Tab = createMaterialTopTabNavigator();
+
 
 const Discover = () => {
 
@@ -15,6 +18,14 @@ const Discover = () => {
     const [filteredDataSource, setFilteredDataSource] = useState([]);
     const [masterDataSource, setMasterDataSource] = useState([]);
     const navigation = useNavigation()
+    const {dat} = useContext(BlogContext)
+    const {hack, setHack} = useContext(BlogContext)
+
+    useEffect(() => {
+        setMasterDataSource(dat)
+    }, []);
+
+
     const searchFilterFunction = (text) => {
 
         if (text) {
@@ -34,51 +45,6 @@ const Discover = () => {
         }
     };
 
-
-    const data = [
-        {
-            name: "VisionX just got selected for P@sha ICT awards",
-            email: "2 days ago",
-            color: "red",
-
-        },
-        {
-            name: "Tekken Tournament held at VisionX",
-            email: "june.cha@gmail.com",
-            color: "yellow"
-        },
-
-        {
-            name: "Iida Niskanen",
-            email: "iida.niskanen@gmail.com",
-            color: "green"
-
-        },
-        {
-            name: "Basic Info",
-            email: "1 day passed",
-            color: "red",
-
-        },
-        {
-            name: "Basic Info",
-            email: "1 day passed",
-            color: "red",
-
-        },
-        {
-            name: "Basic Info",
-            email: "1 day passed",
-            color: "red",
-
-        },
-        {
-            name: "Basic Info",
-            email: "1 day passed",
-            color: "red",
-
-        }
-    ]
     return (
         <SafeAreaView style={{height: "100%", backgroundColor: "white"}}>
             <View style={{height: "100%", backgroundColor: "rgba(99, 94, 205, 1)",}}>

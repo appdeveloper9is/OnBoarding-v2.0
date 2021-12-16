@@ -47,8 +47,6 @@ const Home = () => {
 
         },
     ]
-
-
     return (
 
         <SafeAreaView style={{backgroundColor: "white",}}>
@@ -61,8 +59,6 @@ const Home = () => {
 
                 }}>
                     <View style={{
-
-
                         flexDirection: "row",
                         justifyContent: "center",
                         alignItems: "center",
@@ -76,7 +72,7 @@ const Home = () => {
                             borderRadius: 100 / 2,
                             justifyContent: "center",
                             alignItems: "center",
-                            backgroundColor: "red",
+
                             marginVertical: 20
                         }}>
                             <View style={{
@@ -101,7 +97,7 @@ const Home = () => {
                             </Text>
                         </View>
                     </View>
-                    <View style={{backgroundColor:"green", marginTop:"45%"}}>
+                    <View style={{backgroundColor:"green", marginTop:"50%"}}>
                         <CardViewStack/>
                     </View>
 
@@ -109,7 +105,8 @@ const Home = () => {
                         flexDirection: "row",
                         justifyContent: "space-between",
                         marginTop: "10%",
-                        marginHorizontal: 24,
+                        marginHorizontal: "10%",
+                        marginBottom:"5%"
 
                     }}>
                         <Text style={{fontSize: 22, fontFamily: "Poppins-Bold", color: "black"}}>
@@ -130,8 +127,6 @@ const Home = () => {
                                       return (
                                           <TouchableOpacity
                                               onPress={() => {
-
-
                                                   navigation.navigate("DiscoveryInfo")
                                               }}>
                                               <View style={{
@@ -170,7 +165,6 @@ const Home = () => {
                                       );
                                   }}
                         />
-
                     </View>
                 </View>
             </View>

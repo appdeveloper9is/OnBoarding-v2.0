@@ -40,7 +40,7 @@ const Pending =()=> {
                                             percent={70}
                                             radius={25}
                                             borderWidth={5}
-                                            color={"red"}
+                                            color={"#FFB84D"}
                                             shadowColor="#F2F2F7"
                                             bgColor="#fff"
                                         >

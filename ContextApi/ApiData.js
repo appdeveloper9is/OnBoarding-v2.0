@@ -12,9 +12,11 @@ export const BlogProvider = ({ children }) => {
 
     const [data, setData] = useState([]);
     const [dat, setDat] = useState([]);
+    const [hack, setHack] = useState([]);
+
     const getApidata = async () => {
         try {
-            await axios.get('https://tvrj97vxf0.execute-api.us-east-1.amazonaws.com/dev/employee-form/16?status').then((response) => {
+                    await axios.get('https://tvrj97vxf0.execute-api.us-east-1.amazonaws.com/dev/employee-form/16?status').then((response) => {
 
                 setData(response.data)
 
@@ -54,7 +56,7 @@ export const BlogProvider = ({ children }) => {
         HomeApi();
     }, []);
     return (
-        <BlogContext.Provider value={{data:data, dat:dat}}>{children}</BlogContext.Provider>
+        <BlogContext.Provider value={{data:data, dat:dat, hack, setHack}}>{children}</BlogContext.Provider>
     );
 };
 

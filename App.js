@@ -44,10 +44,7 @@ const App = () => {
 
     return (
         <BlogProvider>
-
-
-
-        <Route/>
+            <Route/>
         </BlogProvider>
 
 

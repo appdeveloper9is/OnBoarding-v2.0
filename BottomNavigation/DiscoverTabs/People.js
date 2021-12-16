@@ -6,7 +6,9 @@ import BlogContext from "../../ContextApi/ApiData";
 
 const People = () => {
     const navigation = useNavigation()
-   const {dat} = useContext(BlogContext)
+   const {dat, hack} = useContext(BlogContext)
+
+
     return (
 
         <SafeAreaView>
