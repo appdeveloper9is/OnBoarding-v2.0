@@ -11,6 +11,7 @@ import {FlatList} from "react-native";
 import BlogContext from "../ContextApi/ApiData";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import DatePicker from "react-native-date-picker";
+import { useForm, Controller } from 'react-hook-form';
 
 
 const BasicInfoForm = ({route}) => {
@@ -129,6 +130,9 @@ const BasicInfoForm = ({route}) => {
         }
     ]
 
+    const onSubmit = data => {
+        console.log(data);
+    };
     const navigation = useNavigation()
     const [date, setDate] = useState(new Date())
     const [open, setOpen] = useState(false)
@@ -140,16 +144,10 @@ const BasicInfoForm = ({route}) => {
     const [itemName, setItemName] = useState("");
     const [state, setState] = useState()
     const [save, setSave] = useState([])
+    const { register, setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
 
-    const addValue=()=>{
-     console.log("sasa", save)
-    }
 
-    const changeValue =(text, index)=>{
-        setItemName(text)
-        setSave([...save, {name:itemName}])
 
-    }
     return (
         <SafeAreaView forceInset={{bottom: 'never'}} style={{backgroundColor: "#635ECD"}}>
             <View style={{height: "100%", width: "100%", backgroundColor: ""}}>
@@ -185,16 +183,24 @@ const BasicInfoForm = ({route}) => {
                                                                         }}>
 
                                                                             {c.type === "text" ?
-                                                                                <TextInput
-                                                                                style={{
-                                                                                    backgroundColor: "white",
-                                                                                    marginBottom: 20,
-                                                                                }}
-                                                                                onChangeText={text => changeValue(text, i )}
-                                                                                activeOutlineColor="gray"
-                                                                                placeholder={c.name}
-                                                                                label={c.name} mode="outlined">
-                                                                            </TextInput>:
+                                                                                <Controller
+                                                                                control={control}
+                                                                                render={({field: { onChange, onBlur, value }}) => (
+                                                                                    <TextInput
+                                                                                        style={{
+                                                                                            backgroundColor: "white",
+                                                                                            marginBottom: 20,
+                                                                                        }}
+                                                                                        onChangeText={text => onChange(text)}
+                                                                                        activeOutlineColor="gray"
+                                                                                        placeholder={c.name}
+                                                                                        value={value}
+                                                                                        label={c.name} mode="outlined">
+                                                                                    </TextInput>
+                                                                                    )}
+
+                                                                                />
+                                                                                :
                                                                             null}
                                                                             {c.type === "password" ?
                                                                                 <TextInput
@@ -301,7 +307,7 @@ const BasicInfoForm = ({route}) => {
                                                     name={() => <Ionicons color="#8083A3" name="ios-chevron-back"
                                                                           size={20}/>}/>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={()=> addValue()} style={{
+                                <TouchableOpacity onPress={handleSubmit(onSubmit)} style={{
                                     alignItems: "center",
                                     justifyContent: "center",
                                     height: 46,
