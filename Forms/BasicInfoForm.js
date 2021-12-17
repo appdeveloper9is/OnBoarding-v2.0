@@ -138,41 +138,16 @@ const BasicInfoForm = ({route}) => {
     const [selected, setSelected] = useState("");
     const [check, setcheck] = useState(false)
     const [itemName, setItemName] = useState("");
-    const [save, setSave] = useState(
-        {
-            name: itemName,
-        }
-
-    );
+    const [state, setState] = useState()
+    const [save, setSave] = useState([])
 
     const addValue=()=>{
-
-
-        console.log("hack", save)
+     console.log("sasa", save)
     }
 
-
-
-
-
     const changeValue =(text, index)=>{
-
         setItemName(text)
-        const some_array = [...name]
-        some_array[index] = itemName
-
-        setSave({
-            ...save,
-
-            name: itemName
-        })
-
-
-
-
-
-
-
+        setSave([...save, {name:itemName}])
 
     }
     return (
